@@ -21,6 +21,7 @@ touch .gitignore
 ```
 - .gitignore 예시
 ```gitigonore
+*git
     node_modules
     package-lock.json
     package.json
