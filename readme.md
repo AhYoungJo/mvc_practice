@@ -1,10 +1,10 @@
 로그인 페이지 MVC 패턴으로 구현 연습
 ==================================
 
-로그인 성공하면 'Login successfull' 메시지 띄우기
+- 로그인 성공하면 'Login successfull' 메시지 띄우기
 ![image](https://github.com/AhYoungJo/mvc_practice02/assets/125351416/829fab59-a7c7-44f2-9772-5d1b7add698a)
 
-로그인 실패하면 'Login failed' 메시지 띄우기
+- 로그인 실패하면 'Login failed' 메시지 띄우기
 ![image](https://github.com/AhYoungJo/mvc_practice02/assets/125351416/7f5211b8-218c-412c-ae29-4fb99813ad89)
 
 <br />
@@ -69,7 +69,7 @@ const users = [
 	},
 ];
 ```
-마지막 줄에 생성한 데이터를 외부에서도 사용할 수 있도록 내보내주는 코드 추가
+- 마지막 줄에 생성한 데이터를 외부에서도 사용할 수 있도록 내보내주는 코드 추가
 ```js
 module.exports = users;
 ```
@@ -81,22 +81,22 @@ module.exports = users;
 
 ```ejs
 <body>
-		<h3>로그인 페이지</h3>
-		<form>
-			<fieldset>
-				<legend>로그인</legend>
-				<label for="id">아이디: </label>
-				<input type="text" id="id" required />
-				<label for="pw">비밀번호: </label>
-				<input type="password" id="pw" required />
-			</fieldset>
-			<button type="button" onclick="loginPost()">로그인</button>
-		</form>
-		<div class="result"></div>
+	<h3>로그인 페이지</h3>
+	<form>
+	<fieldset>
+		<legend>로그인</legend>
+		<label for="id">아이디: </label>
+		<input type="text" id="id" required />
+		<label for="pw">비밀번호: </label>
+		<input type="password" id="pw" required />
+	</fieldset>
+	<button type="button" onclick="loginPost()">로그인</button>
+	</form>
+	<div class="result"></div>
 <body>
 ```
-`<body>`안에 `<script>`를 넣어서 `form`데이터를 전송하고, 백에서 데이터를 불러오기 위한 코드 추가
-```ejs
+- `<body>`안에 `<script>`를 넣어서 `form`데이터를 전송하고, 백에서 데이터를 불러오기 위한 코드 추가
+```javascript
 <script>
 function loginPost() {
   const resultBox = document.querySelector('.result');
@@ -148,9 +148,9 @@ const main = (req, res) => {
 const check_login = (req, res) => {
 	const { id, pw } = req.body;          // index.ejs의 form 데이터 가져오기
 
-	if (users[0].userid === id && users[0].userpw === pw) {       // 만약 아이디와 비밀번호가 일치하면
+	if (users[0].userid === id && users[0].userpw === pw) {             // 만약 아이디와 비밀번호가 일치하면
 		res.send({ success: true, message: 'Login successful' });   // scuess값은 true, message는 이와 같은 내용으로 저장해서 응답한다.
-	} else {                                                      // 틀리면
+	} else {                                                            // 틀리면
 		res.send({ success: false, message: 'Login failed' });      // success값은 false, message는 이와 같은 내용으로 저장해서 응답한다.
 	}
 };
